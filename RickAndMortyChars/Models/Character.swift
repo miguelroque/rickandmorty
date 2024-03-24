@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character {
+public struct Character {
     let name: String
     let imageURL: URL
 }
