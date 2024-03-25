@@ -12,16 +12,9 @@ struct CharacterRow: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: self.character.imageURL) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-            } placeholder: {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-            }
+            AsyncImageView(url: self.character.imageURL)
+                .frame(width: 75, height: 75)
+                .clipShape(Circle())
             Text(self.character.name)
         }
         .padding()

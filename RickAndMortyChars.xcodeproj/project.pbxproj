@@ -21,6 +21,8 @@
 		8D58A9802BB097140069A2B5 /* RickAndMortyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 8D58A97F2BB097140069A2B5 /* RickAndMortyNetworking */; };
 		8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9822BB0B8790069A2B5 /* CharacterListViewModel.swift */; };
 		8D58A9852BB0C6020069A2B5 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9842BB0C6020069A2B5 /* LoadingView.swift */; };
+		8D58A9882BB0CF9E0069A2B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8D58A9872BB0CF9E0069A2B5 /* Kingfisher */; };
+		8D58A98A2BB0D1580069A2B5 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,7 @@
 		8D58A9772BADF0560069A2B5 /* CharacterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetail.swift; sourceTree = "<group>"; };
 		8D58A9822BB0B8790069A2B5 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		8D58A9842BB0C6020069A2B5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D58A9882BB0CF9E0069A2B5 /* Kingfisher in Frameworks */,
 				8D58A97E2BB095530069A2B5 /* RickAndMortyNetworking in Frameworks */,
 				8D58A9802BB097140069A2B5 /* RickAndMortyNetworking in Frameworks */,
 			);
@@ -158,6 +162,7 @@
 				8D58A9752BADF02D0069A2B5 /* CharacterRow.swift */,
 				8D58A9772BADF0560069A2B5 /* CharacterDetail.swift */,
 				8D58A9842BB0C6020069A2B5 /* LoadingView.swift */,
+				8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 			packageProductDependencies = (
 				8D58A97D2BB095530069A2B5 /* RickAndMortyNetworking */,
 				8D58A97F2BB097140069A2B5 /* RickAndMortyNetworking */,
+				8D58A9872BB0CF9E0069A2B5 /* Kingfisher */,
 			);
 			productName = RickAndMortyChars;
 			productReference = 8D58A9432BAD7ECD0069A2B5 /* RickAndMortyChars.app */;
@@ -272,6 +278,7 @@
 			mainGroup = 8D58A93A2BAD7ECD0069A2B5;
 			packageReferences = (
 				8D58A97C2BB095530069A2B5 /* XCLocalSwiftPackageReference "RickAndMortyNetworking" */,
+				8D58A9862BB0CF9E0069A2B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8D58A9442BAD7ECD0069A2B5 /* Products */;
 			projectDirPath = "";
@@ -318,6 +325,7 @@
 				8D58A9742BADE3270069A2B5 /* Character.swift in Sources */,
 				8D58A9492BAD7ECD0069A2B5 /* CharacterListView.swift in Sources */,
 				8D58A9782BADF0560069A2B5 /* CharacterDetail.swift in Sources */,
+				8D58A98A2BB0D1580069A2B5 /* AsyncImageView.swift in Sources */,
 				8D58A9762BADF02D0069A2B5 /* CharacterRow.swift in Sources */,
 				8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */,
 				8D58A9852BB0C6020069A2B5 /* LoadingView.swift in Sources */,
@@ -659,6 +667,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		8D58A9862BB0CF9E0069A2B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		8D58A97D2BB095530069A2B5 /* RickAndMortyNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -667,6 +686,11 @@
 		8D58A97F2BB097140069A2B5 /* RickAndMortyNetworking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RickAndMortyNetworking;
+		};
+		8D58A9872BB0CF9E0069A2B5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D58A9862BB0CF9E0069A2B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

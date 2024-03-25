@@ -32,6 +32,7 @@ struct CharacterListView: View {
                 }
             }
             .navigationTitle("Characters")
+            .onAppear { self.viewModel.loadCharacters() }
         }
     }
 }
