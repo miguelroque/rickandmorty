@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct Character {
+public struct Character: Equatable {
     let name: String
-    let imageURL: URL
+    let imageURL: URL?
+    let id: Int
 }

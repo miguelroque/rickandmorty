@@ -3,4 +3,86 @@
    uuid = "A62FDD84-024E-4439-9F11-BD9914D9C443"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8694CF1-1F18-4B41-9DCB-E93CC1BDFBFF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyChars/View Models/CharacterListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "loadCharacters()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28DF9B13-635B-42F1-B7C3-1FE8A4A283BB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyChars/View Models/CharacterListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "loadCharacters()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "80CAF7ED-2F84-4CD3-8789-683155468463"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyNetworking/Sources/RickAndMortyNetworking/RickAndMortyNetworking.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "fetchCharacters()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "80CAF7ED-2F84-4CD3-8789-683155468463 - d52a79143c35185b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for RickAndMortyNetworking.RickAndMortyNetworking.fetchCharacters() async throws -&gt; Swift.Array&lt;RickAndMortyNetworking.RickAndMortyCharacter&gt;"
+                  moduleName = "RickAndMortyChars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/miguel.roqueferreira/Desktop/Projects/RickAndMortyNetworking/Sources/RickAndMortyNetworking/RickAndMortyNetworking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "744">
+               </Location>
+               <Location
+                  uuid = "80CAF7ED-2F84-4CD3-8789-683155468463 - d52a79143c35187a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for RickAndMortyNetworking.RickAndMortyNetworking.fetchCharacters() async throws -&gt; Swift.Array&lt;RickAndMortyNetworking.RickAndMortyCharacter&gt;"
+                  moduleName = "RickAndMortyChars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/miguel.roqueferreira/Desktop/Projects/RickAndMortyNetworking/Sources/RickAndMortyNetworking/RickAndMortyNetworking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "492">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

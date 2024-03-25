@@ -4,7 +4,7 @@ public protocol RickAndMortyCharacterFetcher {
 
     @available(iOS 15.0, *)
     @available(macOS 12.0, *)
-    func fetchCharacters() async throws -> [RickAndMortyCharacter]
+    func fetchCharacters() async throws -> ([RickAndMortyCharacter], String?)
 }
 
 public enum RickAndMortyNetworkingError: Error {
@@ -27,7 +27,7 @@ public class RickAndMortyNetworking {
 
     @available(iOS 15.0, *)
     @available(macOS 12.0, *)
-    public func fetchCharacters() async throws -> [RickAndMortyCharacter] {
+    public func fetchCharacters() async throws -> ([RickAndMortyCharacter], String?) {
 
         let urlString = String(format: Constants.url, String(self.page))
 
@@ -42,7 +42,7 @@ public class RickAndMortyNetworking {
 
         self.page += 1
 
-        return requestData.results
+        return (requestData.results, requestData.info.next)
     }
 }
 

@@ -14,17 +14,23 @@ import RickAndMortyNetworking
 
 struct CharacterListView: View {
 
-    private var viewModel = CharacterListViewModel()
+    private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel(networkingApi: RickAndMortyNetworking())
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(self.viewModel.characters,
-                        id: \.name) { character in
+                        id: \.id) { character in
 
                     NavigationLink(destination: CharacterDetail(character: character)) {
 
                         CharacterRow(character: character)
+                    }.onAppear {
+
+                        if character == self.viewModel.characters.last {
+
+                            self.viewModel.lastItemReached()
+                        }
                     }
                 }
                 if self.viewModel.state == .loading {
@@ -32,7 +38,6 @@ struct CharacterListView: View {
                 }
             }
             .navigationTitle("Characters")
-            .onAppear { self.viewModel.loadCharacters() }
         }
     }
 }

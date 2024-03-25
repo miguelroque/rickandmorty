@@ -21,7 +21,7 @@ struct AsyncImageView: View {
 
                 if isLoading {
 
-                    LoadingView()
+                    ProgressView()
 
                 } else {
 
