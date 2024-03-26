@@ -14,7 +14,7 @@ import RickAndMortyNetworking
 
 struct CharacterListView: View {
 
-    private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel(networkingApi: RickAndMortyNetworking())
+    @State private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel(networkingApi: RickAndMortyNetworking())
 
     var body: some View {
         NavigationView {
@@ -22,7 +22,7 @@ struct CharacterListView: View {
                 ForEach(self.viewModel.characters,
                         id: \.id) { character in
 
-                    NavigationLink(destination: UIKitViewWrapper()
+                    NavigationLink(destination: CharacterDetailsViewControllerRepresentable(character: character)
                         .navigationTitle(character.name)) {
 
                         CharacterRow(character: character)

@@ -57,6 +57,7 @@ private extension CharacterDetailsSectionView {
 
         let titleView = UILabel()
         titleView.text = section.title
+        titleView.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
 
         let descriptionView = UILabel()
         descriptionView.text = section.description

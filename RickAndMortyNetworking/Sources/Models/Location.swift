@@ -9,6 +9,6 @@ import Foundation
 
 public struct Location: Codable, Equatable {
 
-    let name: String
-    let url: String
+    public let name: String
+    public let url: String
 }

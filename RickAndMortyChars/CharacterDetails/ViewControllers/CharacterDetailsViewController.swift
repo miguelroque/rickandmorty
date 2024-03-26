@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import SwiftUI
+import RickAndMortyNetworking
+import Combine
 
 class CharacterDetailsViewController: UIViewController { 
 
@@ -18,9 +20,18 @@ class CharacterDetailsViewController: UIViewController {
 
     let characterDetailsView = CharacterDetailsView()
 
-    init() {
+    private let characterDetailsViewModel: CharacterDetailsViewModelProtocol
+    private var cancellable = Set<AnyCancellable>()
+    private let spinner = UIActivityIndicatorView(style: .large)
 
+    init(character: Character,
+         networkingAPI: RickAndMortyCharacterLocationFetcher = RickAndMortyNetworking()) {
+
+        self.characterDetailsViewModel = CharacterDetailsViewModel(character: character,
+                                                                   networkingAPI: networkingAPI)
         super.init(nibName: nil, bundle: nil)
+
+        self.characterDetailsViewModel.loadLocation()
     }
 
     required init?(coder: NSCoder) {
@@ -32,12 +43,51 @@ class CharacterDetailsViewController: UIViewController {
 
         super.viewDidLoad()
 
-        let detailSessionConfig = DetailSectionConfig(title: "title",
-                                                      description: "description")
+        self.characterDetailsViewModel.currentState.receive(on: DispatchQueue.main).sink { [weak self] state in
 
-        self.characterDetailsView.configureView(with: UIImageView(), sections: [detailSessionConfig])
+            guard let self else { return }
+
+            self.configureUI(for: state)
+        }.store(in: &self.cancellable)
+    }
+}
+
+private extension CharacterDetailsViewController {
+
+    func configureUI(for state: CharacterDetailsViewState) {
+
+        switch state {
+
+        case .failed:
+            break
+
+        case .loading:
+            self.showSpinner()
+
+        case .loaded(let imageURL, let sections):
+            self.hideSpinner()
+            self.configureView(imageURL: imageURL, detailSections: sections)
+        }
+    }
+
+    func configureView(imageURL: URL?, detailSections: [DetailSection]) {
+
+        self.addSubviews()
+        self.defineSubviews(imageURL: imageURL, detailSections: detailSections)
+        self.defineSubviewConstraints()
+    }
+
+    func addSubviews() {
 
         self.view.addSubview(self.characterDetailsView)
+    }
+
+    func defineSubviews(imageURL: URL?, detailSections: [DetailSection]) {
+
+        self.characterDetailsView.configureView(with: imageURL, sections: detailSections)
+    }
+
+    func defineSubviewConstraints() {
 
         self.characterDetailsView.edgeToSuperview(topMargin: Constants.screenMargins,
                                                   bottomMargin: Constants.screenMargins,
@@ -46,14 +96,24 @@ class CharacterDetailsViewController: UIViewController {
     }
 }
 
-struct UIKitViewWrapper: UIViewControllerRepresentable {
+private extension CharacterDetailsViewController {
 
-    typealias UIViewControllerType = CharacterDetailsViewController
+    func showSpinner() {
 
-    func makeUIViewController(context: Context) -> CharacterDetailsViewController {
+        self.spinner.translatesAutoresizingMaskIntoConstraints = false
+        self.spinner.color = .gray
 
-        return CharacterDetailsViewController()
+        self.view.addSubview(spinner)
+
+        self.spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        self.spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        self.spinner.startAnimating()
     }
 
-    func updateUIViewController(_ uiViewController: CharacterDetailsViewController, context: Context) { }
+    func hideSpinner() {
+
+        self.spinner.stopAnimating()
+        self.spinner.isHidden = true
+    }
 }

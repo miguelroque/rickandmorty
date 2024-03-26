@@ -25,6 +25,7 @@
 		8D58A99A2BB226010069A2B5 /* CharacterDetailsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */; };
 		8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */; };
 		8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */; };
+		8D7971832BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsSectionView.swift; sourceTree = "<group>"; };
 		8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EdgeToSuperview.swift"; sourceTree = "<group>"; };
 		8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
+		8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewControllerRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		8D58A98F2BB21C730069A2B5 /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
+				8D7971812BB35705009EFB08 /* ViewControllerRepresentables */,
 				8D58A9922BB21D490069A2B5 /* ViewControllers */,
 				8D58A9912BB21CE10069A2B5 /* Views */,
 				8D58A9902BB21CDC0069A2B5 /* View Models */,
@@ -227,6 +230,14 @@
 				8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8D7971812BB35705009EFB08 /* ViewControllerRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */,
+			);
+			path = ViewControllerRepresentables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */,
 				8D58A9762BADF02D0069A2B5 /* CharacterRow.swift in Sources */,
 				8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */,
+				8D7971832BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift in Sources */,
 				8D58A9852BB0C6020069A2B5 /* LoadingView.swift in Sources */,
 				8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */,
 				8D58A9472BAD7ECD0069A2B5 /* RickAndMortyCharsApp.swift in Sources */,

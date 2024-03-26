@@ -14,7 +14,6 @@ protocol CharacterListViewModelProtocol {
     var characters: [Character] { get }
     var state: CharacterListViewState { get }
 
-    func loadCharacters()
     func lastItemReached()
 }
 

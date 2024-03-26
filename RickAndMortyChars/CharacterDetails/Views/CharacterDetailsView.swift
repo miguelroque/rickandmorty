@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class CharacterDetailsView: UIView {
 
@@ -28,10 +29,10 @@ class CharacterDetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureView(with image: UIImageView,
+    func configureView(with imageURL: URL?,
                        sections: [DetailSection]) {
 
-        self.addViews(image: image,
+        self.addViews(imageURL: imageURL,
                       sections: sections)
         self.defineSubviews()
         self.addSubviewConstraints()
@@ -40,12 +41,23 @@ class CharacterDetailsView: UIView {
 
 private extension CharacterDetailsView {
 
-    func addViews(image: UIImageView,
+    func addViews(imageURL: URL?,
                   sections: [DetailSection]) {
 
         self.addSubview(self.scrollView)
         self.scrollView.addSubview(self.stackView)
-        self.stackView.addArrangedSubview(image)
+
+        if let imageURL = imageURL {
+            let imageView = UIImageView()
+            imageView.kf.setImage(with: imageURL)
+            self.stackView.addArrangedSubview(imageView)
+        }
+
+        sections.map {
+            print($0.title)
+            print($0.description)
+        }
+
         self.stackView.addArrangedSubviews(sections.map { CharacterDetailsSectionView(config: DetailSectionConfig(title: $0.title,
                                                                                                                   description: $0.description)) })
     }

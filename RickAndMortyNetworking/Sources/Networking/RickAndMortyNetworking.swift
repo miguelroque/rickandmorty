@@ -41,4 +41,4 @@ public class RickAndMortyNetworking {
     }
 }
 
-extension RickAndMortyNetworking: RickAndMortyCharacterFetcher , RickAndMortyCharacterLocationFetcher { }
+extension RickAndMortyNetworking: RickAndMortyCharacterFetcher, RickAndMortyCharacterLocationFetcher { }
