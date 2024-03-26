@@ -22,7 +22,8 @@ struct CharacterListView: View {
                 ForEach(self.viewModel.characters,
                         id: \.id) { character in
 
-                    NavigationLink(destination: CharacterDetail(character: character)) {
+                    NavigationLink(destination: UIKitViewWrapper()
+                        .navigationTitle(character.name)) {
 
                         CharacterRow(character: character)
                     }.onAppear {

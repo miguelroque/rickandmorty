@@ -13,7 +13,6 @@
 		8D58A94E2BAD7ECF0069A2B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D58A94D2BAD7ECF0069A2B5 /* Preview Assets.xcassets */; };
 		8D58A9742BADE3270069A2B5 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9732BADE3270069A2B5 /* Character.swift */; };
 		8D58A9762BADF02D0069A2B5 /* CharacterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9752BADF02D0069A2B5 /* CharacterRow.swift */; };
-		8D58A9782BADF0560069A2B5 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9772BADF0560069A2B5 /* CharacterDetail.swift */; };
 		8D58A97E2BB095530069A2B5 /* RickAndMortyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 8D58A97D2BB095530069A2B5 /* RickAndMortyNetworking */; };
 		8D58A9802BB097140069A2B5 /* RickAndMortyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 8D58A97F2BB097140069A2B5 /* RickAndMortyNetworking */; };
 		8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9822BB0B8790069A2B5 /* CharacterListViewModel.swift */; };
@@ -21,6 +20,11 @@
 		8D58A9882BB0CF9E0069A2B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8D58A9872BB0CF9E0069A2B5 /* Kingfisher */; };
 		8D58A98A2BB0D1580069A2B5 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */; };
 		8D58A98D2BB1E2320069A2B5 /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A98C2BB1E2320069A2B5 /* CharacterListViewModelTests.swift */; };
+		8D58A9962BB21E6C0069A2B5 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9952BB21E6C0069A2B5 /* CharacterDetailsViewController.swift */; };
+		8D58A9982BB21E800069A2B5 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */; };
+		8D58A99A2BB226010069A2B5 /* CharacterDetailsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */; };
+		8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */; };
+		8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +46,15 @@
 		8D58A9532BAD7ECF0069A2B5 /* RickAndMortyCharsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyCharsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D58A9732BADE3270069A2B5 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		8D58A9752BADF02D0069A2B5 /* CharacterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRow.swift; sourceTree = "<group>"; };
-		8D58A9772BADF0560069A2B5 /* CharacterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetail.swift; sourceTree = "<group>"; };
 		8D58A9822BB0B8790069A2B5 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		8D58A9842BB0C6020069A2B5 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		8D58A98C2BB1E2320069A2B5 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		8D58A9952BB21E6C0069A2B5 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
+		8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsSectionView.swift; sourceTree = "<group>"; };
+		8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EdgeToSuperview.swift"; sourceTree = "<group>"; };
+		8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,10 +99,11 @@
 		8D58A9452BAD7ECD0069A2B5 /* RickAndMortyChars */ = {
 			isa = PBXGroup;
 			children = (
-				8D58A9812BB0B8620069A2B5 /* View Models */,
+				8D79717C2BB2FEE2009EFB08 /* Extensions */,
 				8D58A9722BADE31B0069A2B5 /* Models */,
 				8D58A9702BADE0090069A2B5 /* App */,
-				8D58A9712BADE3080069A2B5 /* Views */,
+				8D58A98F2BB21C730069A2B5 /* CharacterDetails */,
+				8D58A98E2BB21B3B0069A2B5 /* CharacterList */,
 				8D58A94A2BAD7ECF0069A2B5 /* Assets.xcassets */,
 				8D58A94C2BAD7ECF0069A2B5 /* Preview Content */,
 			);
@@ -112,7 +121,7 @@
 		8D58A9562BAD7ECF0069A2B5 /* RickAndMortyCharsTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D58A98B2BB1E2120069A2B5 /* View Models */,
+				8D58A9932BB21D600069A2B5 /* CharacterList */,
 			);
 			path = RickAndMortyCharsTests;
 			sourceTree = "<group>";
@@ -130,7 +139,6 @@
 			children = (
 				8D58A9482BAD7ECD0069A2B5 /* CharacterListView.swift */,
 				8D58A9752BADF02D0069A2B5 /* CharacterRow.swift */,
-				8D58A9772BADF0560069A2B5 /* CharacterDetail.swift */,
 				8D58A9842BB0C6020069A2B5 /* LoadingView.swift */,
 				8D58A9892BB0D1580069A2B5 /* AsyncImageView.swift */,
 			);
@@ -159,6 +167,66 @@
 				8D58A98C2BB1E2320069A2B5 /* CharacterListViewModelTests.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		8D58A98E2BB21B3B0069A2B5 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				8D58A9812BB0B8620069A2B5 /* View Models */,
+				8D58A9712BADE3080069A2B5 /* Views */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		8D58A98F2BB21C730069A2B5 /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8D58A9922BB21D490069A2B5 /* ViewControllers */,
+				8D58A9912BB21CE10069A2B5 /* Views */,
+				8D58A9902BB21CDC0069A2B5 /* View Models */,
+			);
+			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
+		8D58A9902BB21CDC0069A2B5 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		8D58A9912BB21CE10069A2B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */,
+				8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8D58A9922BB21D490069A2B5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8D58A9952BB21E6C0069A2B5 /* CharacterDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8D58A9932BB21D600069A2B5 /* CharacterList */ = {
+			isa = PBXGroup;
+			children = (
+				8D58A98B2BB1E2120069A2B5 /* View Models */,
+			);
+			path = CharacterList;
+			sourceTree = "<group>";
+		};
+		8D79717C2BB2FEE2009EFB08 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,12 +341,16 @@
 			files = (
 				8D58A9742BADE3270069A2B5 /* Character.swift in Sources */,
 				8D58A9492BAD7ECD0069A2B5 /* CharacterListView.swift in Sources */,
-				8D58A9782BADF0560069A2B5 /* CharacterDetail.swift in Sources */,
+				8D58A99A2BB226010069A2B5 /* CharacterDetailsSectionView.swift in Sources */,
+				8D58A9982BB21E800069A2B5 /* CharacterDetailsView.swift in Sources */,
 				8D58A98A2BB0D1580069A2B5 /* AsyncImageView.swift in Sources */,
+				8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */,
 				8D58A9762BADF02D0069A2B5 /* CharacterRow.swift in Sources */,
 				8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */,
 				8D58A9852BB0C6020069A2B5 /* LoadingView.swift in Sources */,
+				8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */,
 				8D58A9472BAD7ECD0069A2B5 /* RickAndMortyCharsApp.swift in Sources */,
+				8D58A9962BB21E6C0069A2B5 /* CharacterDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

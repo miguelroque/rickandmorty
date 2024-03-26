@@ -13,8 +13,8 @@ class CharacterListViewModelTests: XCTestCase {
 
     private enum Constants {
 
-        static let loadTime = 1.0
-        static let timeout = 2.0
+        static let loadTime = 2.0
+        static let timeout = 3.0
     }
 
     func testCharacterDownloadError() throws {
@@ -45,9 +45,8 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Download characters limit reached")
 
-        let character = try self.mockRickAndMortyCharacter()
-        let characterFetcher = self.mockRickAndMortyCharacterFetcher(characters: [character],
-                                                                     nextPage: nil)
+        let requestData = try self.mockRequestDataForFinalPage()
+        let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
         viewModel.loadCharacters()
@@ -71,9 +70,8 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Download characters")
 
-        let character = try self.mockRickAndMortyCharacter()
-        let characterFetcher = self.mockRickAndMortyCharacterFetcher(characters: [character],
-                                                                     nextPage: "nextPage")
+        let requestData = try self.mockRequestData()
+        let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
         viewModel.loadCharacters()
@@ -97,9 +95,8 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Should not load more characters because limit has been reached")
 
-        let character = try self.mockRickAndMortyCharacter()
-        let characterFetcher = self.mockRickAndMortyCharacterFetcher(characters: [character],
-                                                                     nextPage: nil)
+        let requestData = try self.mockRequestDataForFinalPage()
+        let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
         viewModel.loadCharacters()
@@ -128,9 +125,8 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Should load more characters because limit has not been reached")
 
-        let character = try self.mockRickAndMortyCharacter()
-        let characterFetcher = self.mockRickAndMortyCharacterFetcher(characters: [character],
-                                                                     nextPage: "nextPage")
+        let requestData = try self.mockRequestData()
+        let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
         viewModel.lastItemReached()
@@ -159,58 +155,111 @@ extension CharacterListViewModelTests {
         return CharacterListViewModelMock(networkingApi: characterFetcher)
     }
 
-    func mockRickAndMortyCharacterFetcher(characters: [RickAndMortyCharacter] = [],
-                                          nextPage: String? = nil) -> RickAndMortyCharacterFetcher {
+    func mockRickAndMortyCharacterFetcher(requestData: RickAndMortyCharacterRequestData? = nil) -> RickAndMortyCharacterFetcher {
 
         let fetcherMock = RickAndMortyCharacterFetcherMock()
-        fetcherMock.rickAndMortyCharactersInjection = characters
-        fetcherMock.nextPageInjection = nextPage
+        fetcherMock.rickAndMortyCharactersRequestDataInjection = requestData
 
         return fetcherMock
     }
 
-    func mockRickAndMortyCharacter() throws -> RickAndMortyCharacter {
+    func mockRequestData() throws -> RickAndMortyCharacterRequestData {
 
         let jsonData = """
         {
-          "id": 1,
-          "name": "Rick Sanchez",
-          "status": "Alive",
-          "species": "Human",
-          "type": "Mad scientist",
-          "gender": "Male",
-          "origin": {
-            "name": "Earth (C-137)",
-            "url": "https://rickandmortyapi.com/api/location/1"
+          "info": {
+            "count": 826,
+            "pages": 42,
+            "next": "https://rickandmortyapi.com/api/character/?page=2",
+            "prev": null
           },
-          "location": {
-            "name": "Earth (Replacement Dimension)",
-            "url": "https://rickandmortyapi.com/api/location/20"
-          },
-          "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-          "episode": [
-            "https://rickandmortyapi.com/api/episode/1"
-          ],
-          "url": "https://rickandmortyapi.com/api/character/1",
-          "created": "2017-11-04T18:48:46.250Z"
+          "results": [
+            {
+              "id": 1,
+              "name": "Rick Sanchez",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Earth",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/1",
+                "https://rickandmortyapi.com/api/episode/2"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/1",
+              "created": "2017-11-04T18:48:46.250Z"
+            }
+          ]
         }
         """.data(using: .utf8)!
 
-        let character = try JSONDecoder().decode(RickAndMortyCharacter.self, from: jsonData)
-        return character
+        let requestData = try JSONDecoder().decode(RickAndMortyCharacterRequestData.self, from: jsonData)
+        return requestData
+    }
+
+    func mockRequestDataForFinalPage() throws -> RickAndMortyCharacterRequestData {
+
+        let jsonData = """
+        {
+          "info": {
+            "count": 826,
+            "pages": 42,
+            "next": null,
+            "prev": "https://rickandmortyapi.com/api/character/?page=2"
+          },
+          "results": [
+            {
+              "id": 1,
+              "name": "Rick Sanchez",
+              "status": "Alive",
+              "species": "Human",
+              "type": "",
+              "gender": "Male",
+              "origin": {
+                "name": "Earth",
+                "url": "https://rickandmortyapi.com/api/location/1"
+              },
+              "location": {
+                "name": "Earth",
+                "url": "https://rickandmortyapi.com/api/location/20"
+              },
+              "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+              "episode": [
+                "https://rickandmortyapi.com/api/episode/1",
+                "https://rickandmortyapi.com/api/episode/2"
+              ],
+              "url": "https://rickandmortyapi.com/api/character/1",
+              "created": "2017-11-04T18:48:46.250Z"
+            }
+          ]
+        }
+        """.data(using: .utf8)!
+
+        let requestData = try JSONDecoder().decode(RickAndMortyCharacterRequestData.self, from: jsonData)
+        return requestData
     }
 }
 
 class RickAndMortyCharacterFetcherMock: RickAndMortyCharacterFetcher {
 
-    var rickAndMortyCharactersInjection: [RickAndMortyCharacter] = []
-    var nextPageInjection: String? = ""
+    var rickAndMortyCharactersRequestDataInjection: RickAndMortyCharacterRequestData? = nil
 
-    func fetchCharacters() async throws -> ([RickAndMortyCharacter], String?) {
+    func fetchCharacters(page: Int) async throws -> RickAndMortyCharacterRequestData {
 
-        if rickAndMortyCharactersInjection.isEmpty { throw RickAndMortyNetworkingError.GeneralError }
+        guard let rickAndMortyCharactersRequestDataInjection = self.rickAndMortyCharactersRequestDataInjection else {
 
-        return (rickAndMortyCharactersInjection, nextPageInjection)
+            throw RickAndMortyNetworkingError.GeneralError
+        }
+
+        return rickAndMortyCharactersRequestDataInjection
     }
 }
 

@@ -50,6 +50,8 @@ class CharacterListViewModel {
     private(set) var state = CharacterListViewState.idle
     private let networkingApi: RickAndMortyCharacterFetcher
 
+    private var page: Int = 1
+
     init(networkingApi: RickAndMortyCharacterFetcher) {
 
         self.networkingApi = networkingApi
@@ -63,11 +65,18 @@ class CharacterListViewModel {
 
         Task {
             do {
-                let (newCharacters, nextPage) = try await self.networkingApi.fetchCharacters()
+                let results = try await self.networkingApi.fetchCharacters(page: self.page)
 
-                self.characters += newCharacters.compactMap { Character(name: $0.name,
+                let newCharacters = results.results
+                let nextPage = results.info.next
+
+                self.characters += newCharacters.compactMap { Character(id: $0.id,
+                                                                        name: $0.name,
                                                                         imageURL: URL(string: $0.image),
-                                                                        id: $0.id) }
+                                                                        status: $0.status,
+                                                                        species: $0.species,
+                                                                        location: $0.location,
+                                                                        episodes: $0.episode) }
 
                 if nextPage == nil {
 
@@ -76,6 +85,7 @@ class CharacterListViewModel {
                 } else {
 
                     self.state = .loaded
+                    self.page += 1
                 }
 
             } catch {
