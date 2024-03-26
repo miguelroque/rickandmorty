@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Location: Codable {
+public struct Location: Codable, Equatable {
 
     let name: String
     let url: String
