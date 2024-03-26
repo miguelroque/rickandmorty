@@ -11,6 +11,7 @@ struct CharacterRow: View {
     let character: Character
 
     var body: some View {
+        
         HStack {
             AsyncImageView(url: self.character.imageURL)
                 .frame(width: 75, height: 75)

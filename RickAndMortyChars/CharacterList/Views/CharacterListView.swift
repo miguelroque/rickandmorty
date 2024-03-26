@@ -17,28 +17,40 @@ struct CharacterListView: View {
     @State private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel(networkingApi: RickAndMortyNetworking())
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(self.viewModel.characters,
-                        id: \.id) { character in
 
-                    NavigationLink(destination: CharacterDetailsViewControllerRepresentable(character: character)
-                        .navigationTitle(character.name)) {
+        if self.viewModel.state == .failed {
 
-                        CharacterRow(character: character)
-                    }.onAppear {
+            NoDataAvailableView {
 
-                        if character == self.viewModel.characters.last {
+                self.viewModel.retryButtonClicked()
+            }
 
-                            self.viewModel.lastItemReached()
-                        }
+        } else {
+
+            NavigationView {
+                List {
+                    ForEach(self.viewModel.characters,
+                            id: \.id) { character in
+
+                        NavigationLink(destination: CharacterDetailsViewControllerRepresentable(character: character)
+                            .navigationTitle(character.name)) {
+
+                                CharacterRow(character: character)
+                            }.onAppear {
+
+                                if character == self.viewModel.characters.last {
+
+                                    self.viewModel.lastItemReached()
+                                }
+                            }
+                    }
+                    if self.viewModel.state == .loading {
+
+                        LoadingView()
                     }
                 }
-                if self.viewModel.state == .loading {
-                    LoadingView()
-                }
+                .navigationTitle("Characters")
             }
-            .navigationTitle("Characters")
         }
     }
 }

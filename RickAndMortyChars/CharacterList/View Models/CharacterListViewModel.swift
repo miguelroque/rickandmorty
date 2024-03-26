@@ -15,6 +15,7 @@ protocol CharacterListViewModelProtocol {
     var state: CharacterListViewState { get }
 
     func lastItemReached()
+    func retryButtonClicked()
 }
 
 enum CharacterListViewState {
@@ -97,6 +98,11 @@ class CharacterListViewModel {
     func lastItemReached() { 
 
         guard self.state.canLoadMore else { return }
+
+        self.loadCharacters()
+    }
+
+    func retryButtonClicked() {
 
         self.loadCharacters()
     }
