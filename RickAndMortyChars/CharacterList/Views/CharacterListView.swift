@@ -14,7 +14,7 @@ import RickAndMortyNetworking
 
 struct CharacterListView: View {
 
-    @State private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel(networkingApi: RickAndMortyNetworking())
+    @State private var viewModel: CharacterListViewModelProtocol = CharacterListViewModel()
 
     var body: some View {
 

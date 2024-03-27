@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9DC466D0-2D68-43BA-AB4E-D44C5CB8BCE2"
+            uuid = "F4F67EAE-891E-489C-B6BD-A81BA6A37B46"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RickAndMortyChars/CharacterList/View Models/CharacterListViewModel.swift"
+            filePath = "RickAndMortyChars/CharacterDetails/Views/CharacterDetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "loadCharacters()"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "addViews(imageURL:sections:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

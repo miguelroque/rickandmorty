@@ -39,6 +39,8 @@ class CharacterDetailsView: UIView {
     }
 }
 
+// MARK: - View Configuration
+
 private extension CharacterDetailsView {
 
     func addViews(imageURL: URL?,
@@ -48,14 +50,10 @@ private extension CharacterDetailsView {
         self.scrollView.addSubview(self.stackView)
 
         if let imageURL = imageURL {
-            let imageView = UIImageView()
-            imageView.kf.setImage(with: imageURL)
-            self.stackView.addArrangedSubview(imageView)
-        }
 
-        sections.map {
-            print($0.title)
-            print($0.description)
+            let imageView = UIImageView()
+            imageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "NoDataAvailable"))
+            self.stackView.addArrangedSubview(imageView)
         }
 
         self.stackView.addArrangedSubviews(sections.map { CharacterDetailsSectionView(config: DetailSectionConfig(title: $0.title,
@@ -69,6 +67,9 @@ private extension CharacterDetailsView {
     }
 
     func addSubviewConstraints() {
+
+        self.scrollView.useAutoLayout()
+        self.stackView.useAutoLayout()
 
         self.scrollView.edgeToSuperview()
         self.stackView.edgeToSuperview()

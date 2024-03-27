@@ -11,7 +11,7 @@ import SwiftUI
 import RickAndMortyNetworking
 import Combine
 
-class CharacterDetailsViewController: UIViewController { 
+class CharacterDetailsViewController: UIViewController {
 
     private enum Constants {
 
@@ -20,18 +20,20 @@ class CharacterDetailsViewController: UIViewController {
 
     let characterDetailsView = CharacterDetailsView()
 
-    private let characterDetailsViewModel: CharacterDetailsViewModelProtocol
+    private let viewModel: CharacterDetailsViewModelProtocol
     private var cancellable = Set<AnyCancellable>()
+    private let errorView = CharacterDetailsErrorView()
     private let spinner = UIActivityIndicatorView(style: .large)
 
     init(character: Character,
          networkingAPI: RickAndMortyCharacterLocationFetcher = RickAndMortyNetworking()) {
 
-        self.characterDetailsViewModel = CharacterDetailsViewModel(character: character,
+        self.viewModel = CharacterDetailsViewModel(character: character,
                                                                    networkingAPI: networkingAPI)
         super.init(nibName: nil, bundle: nil)
 
-        self.characterDetailsViewModel.loadLocation()
+        self.errorView.delegate = self
+        self.viewModel.viewStartedLoading()
     }
 
     required init?(coder: NSCoder) {
@@ -43,7 +45,7 @@ class CharacterDetailsViewController: UIViewController {
 
         super.viewDidLoad()
 
-        self.characterDetailsViewModel.currentState.receive(on: DispatchQueue.main).sink { [weak self] state in
+        self.viewModel.currentState.receive(on: DispatchQueue.main).sink { [weak self] state in
 
             guard let self else { return }
 
@@ -52,6 +54,8 @@ class CharacterDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - View Configuration
+
 private extension CharacterDetailsViewController {
 
     func configureUI(for state: CharacterDetailsViewState) {
@@ -59,12 +63,15 @@ private extension CharacterDetailsViewController {
         switch state {
 
         case .failed:
-            break
+            self.hideSpinner()
+            self.showErrorView()
 
         case .loading:
+            self.hideErrorView()
             self.showSpinner()
 
         case .loaded(let imageURL, let sections):
+            self.hideErrorView()
             self.hideSpinner()
             self.configureView(imageURL: imageURL, detailSections: sections)
         }
@@ -89,12 +96,25 @@ private extension CharacterDetailsViewController {
 
     func defineSubviewConstraints() {
 
+        self.characterDetailsView.useAutoLayout()
         self.characterDetailsView.edgeToSuperview(topMargin: Constants.screenMargins,
                                                   bottomMargin: Constants.screenMargins,
                                                   leadingMargin: Constants.screenMargins,
                                                   trailingMargin: Constants.screenMargins)
     }
 }
+
+// MARK: - CharacterDetailsErrorViewDelegate
+
+extension CharacterDetailsViewController: CharacterDetailsErrorViewDelegate {
+
+    func didPressRetryButton() {
+
+        self.viewModel.didTapRetryButton()
+    }
+}
+
+// MARK: - Spinner Configuration
 
 private extension CharacterDetailsViewController {
 
@@ -115,5 +135,30 @@ private extension CharacterDetailsViewController {
 
         self.spinner.stopAnimating()
         self.spinner.isHidden = true
+    }
+}
+
+// MARK: - Error View Configuration
+
+private extension CharacterDetailsViewController {
+
+    func showErrorView() {
+
+        if self.view.subviews.contains(self.errorView) == false {
+
+            self.view.addSubview(self.errorView)
+            self.errorView.useAutoLayout()
+            self.errorView.edgeToSuperview()
+        }
+
+        self.errorView.isHidden = false
+    }
+
+    func hideErrorView() {
+
+        if self.view.subviews.contains(self.errorView) {
+
+            self.errorView.isHidden = true
+        }
     }
 }

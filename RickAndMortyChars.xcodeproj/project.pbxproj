@@ -23,10 +23,14 @@
 		8D58A9962BB21E6C0069A2B5 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9952BB21E6C0069A2B5 /* CharacterDetailsViewController.swift */; };
 		8D58A9982BB21E800069A2B5 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */; };
 		8D58A99A2BB226010069A2B5 /* CharacterDetailsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */; };
-		8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */; };
+		8D79717E2BB2FEEE009EFB08 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717D2BB2FEEE009EFB08 /* UIView+AutoLayout.swift */; };
 		8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */; };
 		8D7971832BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */; };
 		8D7971852BB35C82009EFB08 /* NoDataAvailableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7971842BB35C82009EFB08 /* NoDataAvailableView.swift */; };
+		8D7971892BB41C6A009EFB08 /* CharacterDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7971882BB41C6A009EFB08 /* CharacterDetailsViewModelTests.swift */; };
+		8D79718C2BB41DDA009EFB08 /* RickAndMortyCharsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79718B2BB41DDA009EFB08 /* RickAndMortyCharsMocks.swift */; };
+		8D79718E2BB43687009EFB08 /* CharacterDetailsErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79718D2BB43687009EFB08 /* CharacterDetailsErrorView.swift */; };
+		8D7971902BB4499C009EFB08 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79718F2BB4499C009EFB08 /* UIStackView+ArrangedSubviews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +59,14 @@
 		8D58A9952BB21E6C0069A2B5 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsSectionView.swift; sourceTree = "<group>"; };
-		8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EdgeToSuperview.swift"; sourceTree = "<group>"; };
+		8D79717D2BB2FEEE009EFB08 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		8D79717F2BB30814009EFB08 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
 		8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		8D7971842BB35C82009EFB08 /* NoDataAvailableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataAvailableView.swift; sourceTree = "<group>"; };
+		8D7971882BB41C6A009EFB08 /* CharacterDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		8D79718B2BB41DDA009EFB08 /* RickAndMortyCharsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCharsMocks.swift; sourceTree = "<group>"; };
+		8D79718D2BB43687009EFB08 /* CharacterDetailsErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsErrorView.swift; sourceTree = "<group>"; };
+		8D79718F2BB4499C009EFB08 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,8 @@
 		8D58A9562BAD7ECF0069A2B5 /* RickAndMortyCharsTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D79718A2BB41DD1009EFB08 /* Mocks */,
+				8D7971862BB41ABA009EFB08 /* CharacterDetails */,
 				8D58A9932BB21D600069A2B5 /* CharacterList */,
 			);
 			path = RickAndMortyCharsTests;
@@ -206,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				8D58A9972BB21E800069A2B5 /* CharacterDetailsView.swift */,
+				8D79718D2BB43687009EFB08 /* CharacterDetailsErrorView.swift */,
 				8D58A9992BB226010069A2B5 /* CharacterDetailsSectionView.swift */,
 			);
 			path = Views;
@@ -230,7 +241,8 @@
 		8D79717C2BB2FEE2009EFB08 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8D79717D2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift */,
+				8D79717D2BB2FEEE009EFB08 /* UIView+AutoLayout.swift */,
+				8D79718F2BB4499C009EFB08 /* UIStackView+ArrangedSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -241,6 +253,30 @@
 				8D7971822BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift */,
 			);
 			path = ViewControllerRepresentables;
+			sourceTree = "<group>";
+		};
+		8D7971862BB41ABA009EFB08 /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8D7971872BB41B0D009EFB08 /* ViewModels */,
+			);
+			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
+		8D7971872BB41B0D009EFB08 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8D7971882BB41C6A009EFB08 /* CharacterDetailsViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8D79718A2BB41DD1009EFB08 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8D79718B2BB41DDA009EFB08 /* RickAndMortyCharsMocks.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,14 +395,16 @@
 				8D58A99A2BB226010069A2B5 /* CharacterDetailsSectionView.swift in Sources */,
 				8D58A9982BB21E800069A2B5 /* CharacterDetailsView.swift in Sources */,
 				8D58A98A2BB0D1580069A2B5 /* AsyncImageView.swift in Sources */,
+				8D79718E2BB43687009EFB08 /* CharacterDetailsErrorView.swift in Sources */,
 				8D7971802BB30814009EFB08 /* CharacterDetailsViewModel.swift in Sources */,
 				8D58A9762BADF02D0069A2B5 /* CharacterRow.swift in Sources */,
 				8D58A9832BB0B8790069A2B5 /* CharacterListViewModel.swift in Sources */,
 				8D7971832BB3572E009EFB08 /* CharacterDetailsViewControllerRepresentable.swift in Sources */,
 				8D58A9852BB0C6020069A2B5 /* LoadingView.swift in Sources */,
-				8D79717E2BB2FEEE009EFB08 /* UIView+EdgeToSuperview.swift in Sources */,
+				8D79717E2BB2FEEE009EFB08 /* UIView+AutoLayout.swift in Sources */,
 				8D58A9472BAD7ECD0069A2B5 /* RickAndMortyCharsApp.swift in Sources */,
 				8D58A9962BB21E6C0069A2B5 /* CharacterDetailsViewController.swift in Sources */,
+				8D7971902BB4499C009EFB08 /* UIStackView+ArrangedSubviews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +413,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D58A98D2BB1E2320069A2B5 /* CharacterListViewModelTests.swift in Sources */,
+				8D79718C2BB41DDA009EFB08 /* RickAndMortyCharsMocks.swift in Sources */,
+				8D7971892BB41C6A009EFB08 /* CharacterDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

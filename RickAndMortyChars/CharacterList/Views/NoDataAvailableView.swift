@@ -13,6 +13,7 @@ struct NoDataAvailableView: View {
     let retryAction: () -> Void
 
     var body: some View {
+
         VStack {
             Text("No Data Available")
             Button(action: {

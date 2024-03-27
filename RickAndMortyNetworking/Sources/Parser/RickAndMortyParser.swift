@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum RickAndMortyParser {
+public enum RickAndMortyParser {
 
-    static func parse<T: Decodable>(data: Data) throws -> T {
+    public static func parse<T: Decodable>(data: Data) throws -> T {
 
         let decoder = JSONDecoder()
 

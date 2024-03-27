@@ -52,12 +52,34 @@ class CharacterListViewModel {
 
     private var page: Int = 1
 
-    init(networkingApi: RickAndMortyCharacterFetcher) {
+    init(networkingApi: RickAndMortyCharacterFetcher = RickAndMortyNetworking()) {
 
         self.networkingApi = networkingApi
 
         self.loadCharacters()
     }
+}
+
+// MARK: - CharacterListViewModelProtocol
+
+extension CharacterListViewModel: CharacterListViewModelProtocol {
+
+    func lastItemReached() {
+
+        guard self.state.canLoadMore else { return }
+
+        self.loadCharacters()
+    }
+
+    func retryButtonClicked() {
+
+        self.loadCharacters()
+    }
+}
+
+// MARK: - Loading Characters
+
+private extension CharacterListViewModel {
 
     func loadCharacters() {
 
@@ -94,18 +116,4 @@ class CharacterListViewModel {
             }
         }
     }
-
-    func lastItemReached() { 
-
-        guard self.state.canLoadMore else { return }
-
-        self.loadCharacters()
-    }
-
-    func retryButtonClicked() {
-
-        self.loadCharacters()
-    }
 }
-
-extension CharacterListViewModel: CharacterListViewModelProtocol { }

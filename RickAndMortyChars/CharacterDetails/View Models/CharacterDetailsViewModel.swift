@@ -13,14 +13,27 @@ protocol CharacterDetailsViewModelProtocol {
 
     var currentState: PassthroughSubject<CharacterDetailsViewState, Never> { get }
 
-    func loadLocation()
+    func viewStartedLoading()
+    func didTapRetryButton()
 }
 
-enum CharacterDetailsViewState {
+enum CharacterDetailsViewState: Equatable {
 
-    case loading
     case failed
+    case loading
     case loaded(URL?, [DetailSection])
+
+    static func == (lhs: CharacterDetailsViewState, rhs: CharacterDetailsViewState) -> Bool {
+
+        switch (lhs, rhs) {
+
+        case (.failed, .failed), (.loading, .loading), (.loaded, .loaded):
+            return true
+
+        default:
+            return false
+        }
+    }
 }
 
 class CharacterDetailsViewModel {
@@ -36,6 +49,26 @@ class CharacterDetailsViewModel {
         self.character = character
         self.networkingAPI = networkingAPI
     }
+}
+
+// MARK: - CharacterDetailsViewModelProtocol
+
+extension CharacterDetailsViewModel: CharacterDetailsViewModelProtocol {
+
+    func didTapRetryButton() {
+
+        self.loadLocation()
+    }
+
+    func viewStartedLoading() {
+
+        self.loadLocation()
+    }
+}
+
+// MARK: - Location Loading
+
+private extension CharacterDetailsViewModel {
 
     func loadLocation() {
 
@@ -76,12 +109,17 @@ class CharacterDetailsViewModel {
 
                 } else {
 
-                    self.currentState.send(.failed)
+                    Task { @MainActor in
+
+                        self.currentState.send(.failed)
+                    }
                 }
             }
         }
     }
 }
+
+// MARK: - Detail Section Configuration Helpers
 
 private extension CharacterDetailsViewModel {
 
@@ -114,5 +152,3 @@ private extension CharacterDetailsViewModel {
         return detailSections
     }
 }
-
-extension CharacterDetailsViewModel: CharacterDetailsViewModelProtocol { }

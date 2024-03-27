@@ -42,6 +42,8 @@ class CharacterDetailsSectionView: UIView {
     }
 }
 
+// MARK: - View Configuration
+
 private extension CharacterDetailsSectionView {
 
     func configureView(with section: DetailSection) {
@@ -74,6 +76,7 @@ private extension CharacterDetailsSectionView {
 
     func addSubviewConstraints() {
 
+        self.stackView.useAutoLayout()
         self.stackView.edgeToSuperview()
     }
 }

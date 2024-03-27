@@ -45,7 +45,7 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Download characters limit reached")
 
-        let requestData = try self.mockRequestDataForFinalPage()
+        let requestData = try RickAndMortyCharsMocks.requestDataForFinalPage()
         let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
@@ -70,7 +70,7 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Download characters")
 
-        let requestData = try self.mockRequestData()
+        let requestData = try RickAndMortyCharsMocks.requestData()
         let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
@@ -95,7 +95,7 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Should not load more characters because limit has been reached")
 
-        let requestData = try self.mockRequestDataForFinalPage()
+        let requestData = try RickAndMortyCharsMocks.requestDataForFinalPage()
         let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
@@ -125,7 +125,7 @@ class CharacterListViewModelTests: XCTestCase {
 
         let expectation = expectation(description: "Should load more characters because limit has not been reached")
 
-        let requestData = try self.mockRequestData()
+        let requestData = try RickAndMortyCharsMocks.requestData()
         let characterFetcher = self.mockRickAndMortyCharacterFetcher(requestData: requestData)
         let viewModel = self.mockViewModel(characterFetcher: characterFetcher)
 
@@ -161,90 +161,6 @@ extension CharacterListViewModelTests {
         fetcherMock.rickAndMortyCharactersRequestDataInjection = requestData
 
         return fetcherMock
-    }
-
-    func mockRequestData() throws -> RickAndMortyCharacterRequestData {
-
-        let jsonData = """
-        {
-          "info": {
-            "count": 826,
-            "pages": 42,
-            "next": "https://rickandmortyapi.com/api/character/?page=2",
-            "prev": null
-          },
-          "results": [
-            {
-              "id": 1,
-              "name": "Rick Sanchez",
-              "status": "Alive",
-              "species": "Human",
-              "type": "",
-              "gender": "Male",
-              "origin": {
-                "name": "Earth",
-                "url": "https://rickandmortyapi.com/api/location/1"
-              },
-              "location": {
-                "name": "Earth",
-                "url": "https://rickandmortyapi.com/api/location/20"
-              },
-              "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-              "episode": [
-                "https://rickandmortyapi.com/api/episode/1",
-                "https://rickandmortyapi.com/api/episode/2"
-              ],
-              "url": "https://rickandmortyapi.com/api/character/1",
-              "created": "2017-11-04T18:48:46.250Z"
-            }
-          ]
-        }
-        """.data(using: .utf8)!
-
-        let requestData = try JSONDecoder().decode(RickAndMortyCharacterRequestData.self, from: jsonData)
-        return requestData
-    }
-
-    func mockRequestDataForFinalPage() throws -> RickAndMortyCharacterRequestData {
-
-        let jsonData = """
-        {
-          "info": {
-            "count": 826,
-            "pages": 42,
-            "next": null,
-            "prev": "https://rickandmortyapi.com/api/character/?page=2"
-          },
-          "results": [
-            {
-              "id": 1,
-              "name": "Rick Sanchez",
-              "status": "Alive",
-              "species": "Human",
-              "type": "",
-              "gender": "Male",
-              "origin": {
-                "name": "Earth",
-                "url": "https://rickandmortyapi.com/api/location/1"
-              },
-              "location": {
-                "name": "Earth",
-                "url": "https://rickandmortyapi.com/api/location/20"
-              },
-              "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-              "episode": [
-                "https://rickandmortyapi.com/api/episode/1",
-                "https://rickandmortyapi.com/api/episode/2"
-              ],
-              "url": "https://rickandmortyapi.com/api/character/1",
-              "created": "2017-11-04T18:48:46.250Z"
-            }
-          ]
-        }
-        """.data(using: .utf8)!
-
-        let requestData = try JSONDecoder().decode(RickAndMortyCharacterRequestData.self, from: jsonData)
-        return requestData
     }
 }
 
