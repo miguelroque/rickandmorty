@@ -58,28 +58,6 @@ class CharacterListViewModel {
 
         self.loadCharacters()
     }
-}
-
-// MARK: - CharacterListViewModelProtocol
-
-extension CharacterListViewModel: CharacterListViewModelProtocol {
-
-    func lastItemReached() {
-
-        guard self.state.canLoadMore else { return }
-
-        self.loadCharacters()
-    }
-
-    func retryButtonClicked() {
-
-        self.loadCharacters()
-    }
-}
-
-// MARK: - Loading Characters
-
-private extension CharacterListViewModel {
 
     func loadCharacters() {
 
@@ -115,5 +93,22 @@ private extension CharacterListViewModel {
                 self.state = .failed
             }
         }
+    }
+}
+
+// MARK: - CharacterListViewModelProtocol
+
+extension CharacterListViewModel: CharacterListViewModelProtocol {
+
+    func lastItemReached() {
+
+        guard self.state.canLoadMore else { return }
+
+        self.loadCharacters()
+    }
+
+    func retryButtonClicked() {
+
+        self.loadCharacters()
     }
 }

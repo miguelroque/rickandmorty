@@ -42,7 +42,7 @@ class CharacterDetailsViewModelTests: XCTestCase {
             }
             .store(in: &self.cancellables)
 
-        viewModel.loadLocation()
+        viewModel.viewStartedLoading()
 
         wait(for: [expectation], timeout: Constants.timeout)
     }
@@ -78,7 +78,7 @@ class CharacterDetailsViewModelTests: XCTestCase {
             }
             .store(in: &self.cancellables)
 
-        viewModel.loadLocation()
+        viewModel.viewStartedLoading()
 
         wait(for: [expectation], timeout: Constants.timeout)
     }
@@ -116,7 +116,7 @@ class CharacterDetailsViewModelTests: XCTestCase {
             }
             .store(in: &self.cancellables)
 
-        viewModel.loadLocation()
+        viewModel.viewStartedLoading()
 
         wait(for: [expectation], timeout: Constants.timeout)
     }
